@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.blogs.dao.UserDao">
+	<select id="getUserById" parameterType="int" resultType="user">
+		select*from user where
+		uid =#{id}
+	</select>
+	<select id="userLogin" parameterType="String" resultType="user">
+		select*from user where username=#{username} and password=#{password}
+	</select>
+	<insert id="saveUser" parameterType="user">
+		insert into user
+		(uname,username,password,email,registerTime,sex,phone,qq)
+		values(#{uname},#{username},#{password},#{email},#{registerTime},#{sex},#{phone},#{qq})
+	</insert>
+	<select id="checkUsername" parameterType="String"
+		resultType="user">
+		select*from user where
+		username=#{username}
+	</select>
+</mapper>
